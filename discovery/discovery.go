@@ -19,7 +19,7 @@ type Discovery struct {
 }
 
 func New() (*Discovery, error) {
-	d, err := create(&http.Client{})
+	d, err := fromClient(&http.Client{})
 	if err != nil {
 		return nil, fmt.Errorf("discovery: %w", err)
 	}
@@ -34,7 +34,7 @@ func (d *Discovery) ServiceURL(name string) (string, error) {
 	return url, nil
 }
 
-func create(client HTTPClientGet) (*Discovery, error) {
+func fromClient(client HTTPClientGet) (*Discovery, error) {
 	d := &Discovery{
 		client:   client,
 		services: make(map[string]string),

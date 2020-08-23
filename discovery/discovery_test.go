@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func Test_create(t *testing.T) {
+func Test_fromClient(t *testing.T) {
 	type args struct {
 		client HTTPClientGet
 	}
@@ -88,7 +88,7 @@ func Test_create(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := create(tt.args.client)
+			got, err := fromClient(tt.args.client)
 			if err != nil {
 				if !tt.wantErr {
 					t.Errorf("New() error = %v, wantErr %v", err, tt.wantErr)
