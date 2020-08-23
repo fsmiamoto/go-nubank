@@ -9,7 +9,6 @@ import (
 )
 
 var ErrServiceNotFound = errors.New("discovery: service not found")
-var ErrAppServiceNotFound = errors.New("discovery: app service not found")
 
 const DISCOVERY_URL = "https://prod-s0-webapp-proxy.nubank.com.br/api/discovery"
 const DISCOVERY_APP_URL = "https://prod-s0-webapp-proxy.nubank.com.br/api/app/discovery"
