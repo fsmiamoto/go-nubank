@@ -89,14 +89,12 @@ func Test_fromClient(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := fromClient(tt.args.client)
-			if err != nil {
-				if !tt.wantErr {
-					t.Errorf("New() error = %v, wantErr %v", err, tt.wantErr)
-				}
+			if (err != nil) != tt.wantErr {
+				t.Errorf("New() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 
-			if !reflect.DeepEqual(got.services, tt.want.services) {
+			if err == nil && !reflect.DeepEqual(got.services, tt.want.services) {
 				t.Errorf("New() = %v, want %v", got.services, tt.want.services)
 			}
 		})
@@ -150,14 +148,12 @@ func TestServiceURL(t *testing.T) {
 				services: tt.fields.services,
 			}
 			got, err := d.ServiceURL(tt.args.name)
-			if err != nil {
-				if !tt.wantErr {
-					t.Errorf("New() error = %v, wantErr %v", err, tt.wantErr)
-				}
+			if (err != nil) != tt.wantErr {
+				t.Errorf("New() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 
-			if got != tt.want {
+			if err == nil && got != tt.want {
 				t.Errorf("Discovery.serviceURL() = %v, want %v", got, tt.want)
 			}
 		})
