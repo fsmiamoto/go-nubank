@@ -44,10 +44,10 @@ func TestLogin(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &Auth{
-				client:     &http.Client{},
-				serviceURL: tt.server.URL,
-				login:      tt.login,
-				password:   tt.password,
+				client:   &http.Client{},
+				loginURL: tt.server.URL,
+				login:    tt.login,
+				password: tt.password,
 			}
 
 			err := a.Login()

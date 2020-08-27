@@ -7,24 +7,27 @@ import (
 
 type Auth struct {
 	client      HTTPClientPost
-	serviceURL  string
+	loginURL    string
+	liftURL     string
 	accessToken string
 	login       string
 	password    string
 }
 
 type Config struct {
-	ServiceURL string
-	CPF        string
-	Password   string
+	CPF             string
+	Password        string
+	LoginServiceURL string
+	LiftServiceURL  string
 }
 
 func New(cfg *Config) (*Auth, error) {
 	return &Auth{
-		client:     &http.Client{},
-		serviceURL: cfg.ServiceURL,
-		login:      cfg.CPF,
-		password:   cfg.Password,
+		login:    cfg.CPF,
+		password: cfg.Password,
+		client:   &http.Client{},
+		loginURL: cfg.LoginServiceURL,
+		liftURL:  cfg.LiftServiceURL,
 	}, nil
 }
 
@@ -42,7 +45,7 @@ func (a *Auth) requestAccessToken() error {
 		return fmt.Errorf("auth: %w", err)
 	}
 
-	response, err := sendRequestToService(a.client, a.serviceURL, request)
+	response, err := sendRequestToService(a.client, a.loginURL, request)
 	if err != nil {
 		return fmt.Errorf("auth: %w", err)
 	}
