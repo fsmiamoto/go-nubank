@@ -27,14 +27,14 @@ func TestLogin(t *testing.T) {
 		wantErr  bool
 	}{
 		{
-			name:     "login with valid credentials",
+			name:     "can login with valid credentials",
 			server:   buildMockAuthServer("1234", "pass"),
 			login:    "1234",
 			password: "pass",
 			wantErr:  false,
 		},
 		{
-			name:     "login with invalid credentials",
+			name:     "cannot login with invalid credentials",
 			server:   buildMockAuthServer("1234", "pass"),
 			login:    "1234",
 			password: "not_pass",
@@ -46,9 +46,11 @@ func TestLogin(t *testing.T) {
 			a := &Auth{
 				client:     &http.Client{},
 				serviceURL: tt.server.URL,
+				login:      tt.login,
+				password:   tt.password,
 			}
 
-			err := a.Login(tt.login, tt.password)
+			err := a.Login()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Auth.Login() error = %v, wantErr %v", err, tt.wantErr)
 				return
