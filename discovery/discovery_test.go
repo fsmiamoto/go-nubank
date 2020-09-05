@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestNew(t *testing.T) {
@@ -17,19 +19,13 @@ func TestNew(t *testing.T) {
 		`)
 
 		d, err := fromClient(&http.Client{}, []string{server.URL})
-		if err != nil {
-			t.Errorf("expected no error but got %q", err)
-		}
+		assert.Nil(t, err)
 
-		url, err := d.ServiceURL("login")
+		got, err := d.ServiceURL("login")
 		expected := "url_login"
 
-		if url != expected {
-			t.Errorf("expected %q but got %q", expected, url)
-		}
-		if err != nil {
-			t.Errorf("expected no error but got %v", err)
-		}
+		assert.Nil(t, err)
+		assert.Equal(t, expected, got)
 	})
 
 	t.Run("missing service", func(t *testing.T) {
@@ -42,14 +38,10 @@ func TestNew(t *testing.T) {
 		`)
 
 		d, err := fromClient(&http.Client{}, []string{server.URL})
-		if err != nil {
-			t.Errorf("expected no error but got %q", err)
-		}
+		assert.Nil(t, err)
 
 		_, err = d.ServiceURL("missing")
-		if err == nil {
-			t.Errorf("expected an error but got none")
-		}
+		assert.NotNil(t, err)
 	})
 
 	t.Run("ignore second level urls", func(t *testing.T) {
@@ -67,14 +59,10 @@ func TestNew(t *testing.T) {
 		`)
 
 		d, err := fromClient(&http.Client{}, []string{server.URL})
-		if err != nil {
-			t.Errorf("expected no error but got %q", err)
-		}
+		assert.Nil(t, err)
 
 		_, err = d.ServiceURL("ios")
-		if err == nil {
-			t.Errorf("expected an error but got none")
-		}
+		assert.NotNil(t, err)
 	})
 
 }
