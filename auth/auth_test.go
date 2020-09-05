@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var sucessResponseFixture = []byte(`
@@ -19,48 +21,28 @@ var sucessResponseFixture = []byte(`
 var accessTokenFixture = "your_token"
 
 func TestLogin(t *testing.T) {
-	tests := []struct {
-		name     string
-		server   *httptest.Server
-		login    string
-		password string
-		wantErr  bool
-	}{
-		{
-			name:     "can login with valid credentials",
-			server:   buildMockAuthServer("1234", "pass"),
-			login:    "1234",
-			password: "pass",
-			wantErr:  false,
-		},
-		{
-			name:     "cannot login with invalid credentials",
-			server:   buildMockAuthServer("1234", "pass"),
-			login:    "1234",
-			password: "not_pass",
-			wantErr:  true,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			a := &Auth{
-				client:   &http.Client{},
-				loginURL: tt.server.URL,
-				login:    tt.login,
-				password: tt.password,
-			}
-
-			err := a.Login()
-			if (err != nil) != tt.wantErr {
-				t.Errorf("Auth.Login() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-
-			if err == nil && a.AccessToken() != accessTokenFixture {
-				t.Errorf("Auth.Login() want accessToken to be %q but got %q ", accessTokenFixture, a.AccessToken())
-			}
+	t.Run("valid crendentials", func(t *testing.T) {
+		server := buildMockAuthServer("1234", "pass")
+		a, err := New(&Config{
+			CPF:             "1234",
+			Password:        "pass",
+			LoginServiceURL: server.URL,
 		})
-	}
+		assert.Nil(t, err)
+		assert.Nil(t, a.Login())
+		assert.Equal(t, accessTokenFixture, a.AccessToken())
+	})
+
+	t.Run("invalid crendentials", func(t *testing.T) {
+		server := buildMockAuthServer("1234", "pass")
+		a, err := New(&Config{
+			CPF:             "1234",
+			Password:        "potato",
+			LoginServiceURL: server.URL,
+		})
+		assert.Nil(t, err)
+		assert.NotNil(t, a.Login())
+	})
 }
 
 func buildMockAuthServer(login, password string) *httptest.Server {
