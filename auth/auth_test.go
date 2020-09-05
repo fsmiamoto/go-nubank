@@ -10,49 +10,54 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var sucessResponseFixture = []byte(`
-	{
-	  "access_token": "your_token",
-	  "token_type": "bearer",
-	  "refresh_token": "string token",
-	  "refresh_before": "2020-08-22T22:38:49Z"
-	}
-`)
-var accessTokenFixture = "your_token"
+func TestLoginWithQRCode(t *testing.T) {
+	loginServer := buildMockLoginService("1234", "pass")
+	liftServer := buildMockLiftService("aaaa-bbbb-cccc", "your_token")
 
-func TestLogin(t *testing.T) {
-	t.Run("valid crendentials", func(t *testing.T) {
-		server := buildMockAuthServer("1234", "pass")
-		a, err := New(&Config{
+	t.Run("invalid login credentials", func(t *testing.T) {
+		a, _ := New(&Config{
 			CPF:             "1234",
-			Password:        "pass",
-			LoginServiceURL: server.URL,
+			Password:        "not-pass",
+			LoginServiceURL: loginServer.URL,
+			LiftServiceURL:  liftServer.URL,
 		})
-		assert.Nil(t, err)
-		assert.Nil(t, a.Login())
-		assert.Equal(t, accessTokenFixture, a.AccessToken())
+
+		assert.Error(t, ErrInvalidCredentials, a.LoginWithQRCode("aaaa-bbbb-cccc"))
 	})
 
-	t.Run("invalid crendentials", func(t *testing.T) {
-		server := buildMockAuthServer("1234", "pass")
-		a, err := New(&Config{
+	t.Run("registered qr code", func(t *testing.T) {
+		a, _ := New(&Config{
 			CPF:             "1234",
-			Password:        "potato",
-			LoginServiceURL: server.URL,
+			Password:        "pass",
+			LoginServiceURL: loginServer.URL,
+			LiftServiceURL:  liftServer.URL,
 		})
-		assert.Nil(t, err)
-		assert.NotNil(t, a.Login())
+
+		assert.NoError(t, a.LoginWithQRCode("aaaa-bbbb-cccc"))
+
+		assert.Equal(t, "your_lift_token", a.AccessToken())
+	})
+
+	t.Run("unregistered qr code", func(t *testing.T) {
+		a, _ := New(&Config{
+			CPF:             "1234",
+			Password:        "pass",
+			LoginServiceURL: loginServer.URL,
+			LiftServiceURL:  liftServer.URL,
+		})
+
+		assert.Error(t, assert.AnError, a.LoginWithQRCode("random-id"))
 	})
 }
 
-func buildMockAuthServer(login, password string) *httptest.Server {
+func buildMockLiftService(qrCodeID string, token string) *httptest.Server {
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		var requestBody map[string]string
+		var requestBody liftRequest
 
 		rawBody, _ := ioutil.ReadAll(r.Body)
 		json.Unmarshal(rawBody, &requestBody)
 
-		if requestBody["login"] != login || requestBody["password"] != password {
+		if r.Header.Get("Authorization") != "Bearer "+token {
 			w.WriteHeader(401)
 			w.Write([]byte(`
 				{
@@ -62,8 +67,46 @@ func buildMockAuthServer(login, password string) *httptest.Server {
 			return
 		}
 
+		if requestBody.QRCodeID != qrCodeID {
+			w.WriteHeader(404)
+			return
+		}
+
 		w.WriteHeader(200)
-		w.Write(sucessResponseFixture)
-		return
+		w.Write([]byte(`
+		{
+		  "access_token": "your_lift_token",
+		  "token_type": "bearer"
+		}
+		`))
+	}))
+}
+
+func buildMockLoginService(login, password string) *httptest.Server {
+	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var requestBody loginRequest
+
+		rawBody, _ := ioutil.ReadAll(r.Body)
+		json.Unmarshal(rawBody, &requestBody)
+
+		if requestBody.Login != login || requestBody.Password != password {
+			w.WriteHeader(401)
+			w.Write([]byte(`
+			{
+				"error": "Unauthorized"
+			}
+			`))
+			return
+		}
+
+		w.WriteHeader(200)
+		w.Write([]byte(`
+		{
+		  "access_token": "your_token",
+		  "token_type": "bearer",
+		  "refresh_token": "string token",
+		  "refresh_before": "2020-08-22T22:38:49Z"
+		}
+		`))
 	}))
 }

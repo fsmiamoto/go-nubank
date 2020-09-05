@@ -11,6 +11,16 @@ import (
 
 var ErrInvalidCredentials = errors.New("auth: invalid credentials")
 
+type liftRequest struct {
+	QRCodeID string `json:"qr_code_id"`
+	Type     string `json:"type"`
+}
+
+type liftResponse struct {
+	AccessToken string `json:"access_token"`
+	TokenType   string `json:"token_type"`
+}
+
 type loginRequest struct {
 	Login        string `json:"login"`
 	Password     string `json:"password"`
@@ -26,7 +36,7 @@ type loginResponse struct {
 	RefreshBefore string `json:"refresh_before"`
 }
 
-func getTokenFromResponse(rawResponse []byte) (string, error) {
+func getTokenFromLoginResponse(rawResponse []byte) (string, error) {
 	var response loginResponse
 
 	err := json.Unmarshal(rawResponse, &response)
@@ -37,18 +47,39 @@ func getTokenFromResponse(rawResponse []byte) (string, error) {
 	return response.AccessToken, nil
 }
 
-func buildLoginRequestBody(login, password string) ([]byte, error) {
-	return json.Marshal(loginRequest{
+func getTokenFromLiftResponse(rawResponse []byte) (string, error) {
+	var response liftResponse
+
+	err := json.Unmarshal(rawResponse, &response)
+	if err != nil {
+		return "", err
+	}
+
+	return response.AccessToken, nil
+}
+
+func buildLoginRequest(url string, login, password string) (*http.Request, error) {
+	body, err := json.Marshal(loginRequest{
 		Login:        login,
 		Password:     password,
 		GrantType:    "password",
 		ClientID:     "other.conta",
 		ClientSecret: "yQPeLzoHuJzlMMSAjC-LgNUJdUecx8XO",
 	})
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(body))
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
 }
 
-func sendRequestToService(client HTTPClientPost, url string, body []byte) ([]byte, error) {
-	res, err := client.Post(url, "application/json", bytes.NewBuffer(body))
+func sendRequestToService(client HTTPClient, req *http.Request) ([]byte, error) {
+	res, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -67,4 +98,23 @@ func sendRequestToService(client HTTPClientPost, url string, body []byte) ([]byt
 	}
 
 	return responseBody, nil
+}
+
+func buildLiftRequest(serviceURL string, qrCodeID string, token string) (*http.Request, error) {
+	body, err := json.Marshal(liftRequest{
+		QRCodeID: qrCodeID,
+		Type:     "login-webapp",
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", serviceURL, bytes.NewBuffer(body))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Authorization", "Bearer "+token)
+
+	return req, nil
 }

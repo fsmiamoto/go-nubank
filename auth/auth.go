@@ -6,12 +6,14 @@ import (
 )
 
 type Auth struct {
-	client      HTTPClientPost
-	loginURL    string
-	liftURL     string
-	accessToken string
-	login       string
-	password    string
+	client           HTTPClient
+	loginURL         string
+	liftURL          string
+	loginAccessToken string
+	accessToken      string
+	login            string
+	password         string
+	qrCodeID         string
 }
 
 type Config struct {
@@ -31,31 +33,56 @@ func New(cfg *Config) (*Auth, error) {
 	}, nil
 }
 
-func (a *Auth) Login() error {
-	return a.requestAccessToken()
-}
-
 func (a *Auth) AccessToken() string {
 	return a.accessToken
 }
 
-func (a *Auth) requestAccessToken() error {
-	request, err := buildLoginRequestBody(a.login, a.password)
+func (a *Auth) LoginWithQRCode(qrCodeID string) error {
+	err := a.requestAccessToken()
+	if err != nil {
+		return err
+	}
+	return a.liftQRCodeID(qrCodeID)
+}
+
+func (a *Auth) liftQRCodeID(qrCodeID string) error {
+	req, err := buildLiftRequest(a.liftURL, qrCodeID, a.loginAccessToken)
 	if err != nil {
 		return fmt.Errorf("auth: %w", err)
 	}
 
-	response, err := sendRequestToService(a.client, a.loginURL, request)
+	res, err := sendRequestToService(a.client, req)
 	if err != nil {
 		return fmt.Errorf("auth: %w", err)
 	}
 
-	token, err := getTokenFromResponse(response)
+	token, err := getTokenFromLiftResponse(res)
 	if err != nil {
 		return fmt.Errorf("auth: %w", err)
 	}
 
 	a.accessToken = token
+
+	return err
+}
+
+func (a *Auth) requestAccessToken() error {
+	req, err := buildLoginRequest(a.loginURL, a.login, a.password)
+	if err != nil {
+		return fmt.Errorf("auth: %w", err)
+	}
+
+	res, err := sendRequestToService(a.client, req)
+	if err != nil {
+		return fmt.Errorf("auth: %w", err)
+	}
+
+	token, err := getTokenFromLoginResponse(res)
+	if err != nil {
+		return fmt.Errorf("auth: %w", err)
+	}
+
+	a.loginAccessToken = token
 
 	return nil
 }
