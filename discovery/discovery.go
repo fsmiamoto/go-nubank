@@ -9,17 +9,16 @@ import (
 )
 
 var ErrServiceNotFound = errors.New("discovery: service not found")
-
-const DISCOVERY_URL = "https://prod-s0-webapp-proxy.nubank.com.br/api/discovery"
-const DISCOVERY_APP_URL = "https://prod-s0-webapp-proxy.nubank.com.br/api/app/discovery"
+var serviceURLs = []string{"https://prod-s0-webapp-proxy.nubank.com.br/api/discovery", "https://prod-s0-webapp-proxy.nubank.com.br/api/app/discovery"}
 
 type Discovery struct {
 	client   HTTPClientGet
+	urls     []string
 	services map[string]string
 }
 
 func New() (*Discovery, error) {
-	d, err := fromClient(&http.Client{})
+	d, err := fromClient(&http.Client{}, serviceURLs)
 	if err != nil {
 		return nil, fmt.Errorf("discovery: %w", err)
 	}
@@ -34,20 +33,18 @@ func (d *Discovery) ServiceURL(name string) (string, error) {
 	return url, nil
 }
 
-func fromClient(client HTTPClientGet) (*Discovery, error) {
+func fromClient(client HTTPClientGet, urls []string) (*Discovery, error) {
 	d := &Discovery{
 		client:   client,
+		urls:     urls,
 		services: make(map[string]string),
 	}
 
-	err := d.fetchServicesFrom(DISCOVERY_URL)
-	if err != nil {
-		return nil, err
-	}
-
-	err = d.fetchServicesFrom(DISCOVERY_APP_URL)
-	if err != nil {
-		return nil, err
+	for _, url := range d.urls {
+		err := d.fetchServicesFrom(url)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	return d, nil
