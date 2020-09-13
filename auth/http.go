@@ -21,8 +21,9 @@ type liftRequest struct {
 }
 
 type liftResponse struct {
-	AccessToken string `json:"access_token"`
-	TokenType   string `json:"token_type"`
+	AccessToken string                       `json:"access_token"`
+	TokenType   string                       `json:"token_type"`
+	Links       map[string]map[string]string `json:"_links"`
 }
 
 type loginRequest struct {
@@ -60,6 +61,22 @@ func getTokenFromLiftResponse(rawResponse []byte) (string, error) {
 	}
 
 	return response.AccessToken, nil
+}
+
+func getLinksFromLiftResponse(rawResponse []byte) (map[string]string, error) {
+	var response liftResponse
+	err := json.Unmarshal(rawResponse, &response)
+	if err != nil {
+		return nil, err
+	}
+
+	links := make(map[string]string)
+
+	for service, value := range response.Links {
+		links[service] = value["href"]
+	}
+
+	return links, nil
 }
 
 func buildLoginRequest(serviceURL string, login, password string) (*http.Request, error) {

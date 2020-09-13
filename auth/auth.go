@@ -7,6 +7,7 @@ import (
 
 type Auth struct {
 	client           HTTPClient
+	links            map[string]string
 	loginURL         string
 	liftURL          string
 	loginAccessToken string
@@ -45,6 +46,10 @@ func (a *Auth) LoginWithQRCode(qrCodeID string) error {
 	return a.liftQRCodeID(qrCodeID)
 }
 
+func (a *Auth) Links() map[string]string {
+	return a.links
+}
+
 func (a *Auth) liftQRCodeID(qrCodeID string) error {
 	req, err := buildLiftRequest(a.liftURL, qrCodeID, a.loginAccessToken)
 	if err != nil {
@@ -61,7 +66,13 @@ func (a *Auth) liftQRCodeID(qrCodeID string) error {
 		return fmt.Errorf("auth: %w", err)
 	}
 
+	links, err := getLinksFromLiftResponse(res)
+	if err != nil {
+		return fmt.Errorf("auth: %w", err)
+	}
+
 	a.accessToken = token
+	a.links = links
 
 	return err
 }
