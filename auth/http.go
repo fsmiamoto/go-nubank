@@ -11,6 +11,10 @@ import (
 
 var ErrInvalidCredentials = errors.New("auth: invalid credentials")
 
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+
 type liftRequest struct {
 	QRCodeID string `json:"qr_code_id"`
 	Type     string `json:"type"`
