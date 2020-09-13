@@ -54,6 +54,12 @@ func buildMockLiftService(qrCodeID string, token string) *httptest.Server {
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var requestBody liftRequest
 
+		if r.Header.Get("Content-Type") != "application/json" {
+			w.WriteHeader(400)
+			w.Write([]byte(`{"error"::"(not (some-matching-condition? nil))"}`))
+			return
+		}
+
 		rawBody, _ := ioutil.ReadAll(r.Body)
 		json.Unmarshal(rawBody, &requestBody)
 
@@ -85,6 +91,12 @@ func buildMockLiftService(qrCodeID string, token string) *httptest.Server {
 func buildMockLoginService(login, password string) *httptest.Server {
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var requestBody loginRequest
+
+		if r.Header.Get("Content-Type") != "application/json" {
+			w.WriteHeader(400)
+			w.Write([]byte(`{"error"::"(not (some-matching-condition? nil))"}`))
+			return
+		}
 
 		rawBody, _ := ioutil.ReadAll(r.Body)
 		json.Unmarshal(rawBody, &requestBody)

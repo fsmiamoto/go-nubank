@@ -58,7 +58,7 @@ func getTokenFromLiftResponse(rawResponse []byte) (string, error) {
 	return response.AccessToken, nil
 }
 
-func buildLoginRequest(url string, login, password string) (*http.Request, error) {
+func buildLoginRequest(serviceURL string, login, password string) (*http.Request, error) {
 	body, err := json.Marshal(loginRequest{
 		Login:        login,
 		Password:     password,
@@ -70,10 +70,12 @@ func buildLoginRequest(url string, login, password string) (*http.Request, error
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(body))
+	req, err := http.NewRequest("POST", serviceURL, bytes.NewBuffer(body))
 	if err != nil {
 		return nil, err
 	}
+
+	req.Header.Add("Content-Type", "application/json")
 
 	return req, nil
 }
@@ -115,6 +117,7 @@ func buildLiftRequest(serviceURL string, qrCodeID string, token string) (*http.R
 	}
 
 	req.Header.Set("Authorization", "Bearer "+token)
+	req.Header.Add("Content-Type", "application/json")
 
 	return req, nil
 }
