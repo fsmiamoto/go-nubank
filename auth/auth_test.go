@@ -56,7 +56,7 @@ func buildMockLiftService(qrCodeID string, token string) *httptest.Server {
 
 		if r.Header.Get("Content-Type") != "application/json" {
 			w.WriteHeader(400)
-			w.Write([]byte(`{"error"::"(not (some-matching-condition? nil))"}`))
+			w.Write([]byte(`{"error":"(not (some-matching-condition? nil))"}`))
 			return
 		}
 
@@ -78,13 +78,10 @@ func buildMockLiftService(qrCodeID string, token string) *httptest.Server {
 			return
 		}
 
+		fixture, _ := ioutil.ReadFile("./tests/lift_response_fixture.json")
+
 		w.WriteHeader(200)
-		w.Write([]byte(`
-		{
-		  "access_token": "your_lift_token",
-		  "token_type": "bearer"
-		}
-		`))
+		w.Write(fixture)
 	}))
 }
 
@@ -111,14 +108,9 @@ func buildMockLoginService(login, password string) *httptest.Server {
 			return
 		}
 
+		fixture, _ := ioutil.ReadFile("./tests/login_response_fixture.json")
+
 		w.WriteHeader(200)
-		w.Write([]byte(`
-		{
-		  "access_token": "your_token",
-		  "token_type": "bearer",
-		  "refresh_token": "string token",
-		  "refresh_before": "2020-08-22T22:38:49Z"
-		}
-		`))
+		w.Write(fixture)
 	}))
 }

@@ -1,0 +1,20 @@
+{
+  "access_token": "your_token",
+  "token_type": "bearer",
+  "_links": {
+    "revoke_token": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDoV28GLVEQYvnPwBMVrQIH5KJBMQ.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3Jldm9rZQ"
+    },
+    "revoke_all": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCi_hq8s2Ixt7wmq4_qG6mtdnCCrA.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3Jldm9rZS9hbGw"
+    },
+    "account_emergency": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LD0F5ql2KYg2qVYFXLnTRkSd3zLMg.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2FjY291bnQvZW1lcmdlbmN5LWFjY2Vzcw"
+    },
+    "bill_emergency": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBhrm1FAiQZvjdmVXIr08wHZlYLwQ.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2JpbGwvZW1lcmdlbmN5LWFjY2Vzcw"
+    }
+  },
+  "refresh_token": "string token",
+  "refresh_before": "2020-09-13T01:46:11Z"
+}

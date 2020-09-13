@@ -1,0 +1,126 @@
+{
+  "access_token": "your_lift_token",
+  "token_type": "bearer",
+  "_links": {
+    "rewards_customer_enrollment": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LD_GUKxRNSglALGGRVMVeRpYEFB7A.aHR0cHM6Ly9wcm9kLXMwLW1haXRyZS5udWJhbmsuY29tLmJyL2FwaS9wcm9kdWN0cy86cHJvZHVjdC1uYW1lL2N1c3RvbWVycy81NWQ5ZGI2Mi1jZTdiLTQ0NTUtOTk4Zi05OWQwMDc2OTM4ZTYvZW5yb2xsbWVudC1pbmZv"
+    },
+    "rosetta_images": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCdLQwaZZbsxwpY6lg0f4wZ3nM8kA.aHR0cHM6Ly9wcm9kLXMwLXJvc2V0dGEubnViYW5rLmNvbS5ici9hcGkvaW1hZ2Vz"
+    },
+    "change_password": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBHzAKwzJ6P44jCIkdtlkSoglL_0g.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL2NoYW5nZS1wYXNzd29yZA"
+    },
+    "enabled_features": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCnau6q9b0DwHcP5KAChBzHDf6QGw.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L3JvbGxvdXQ"
+    },
+    "certificate_status": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCsLJ7Gmd_SsP6tM6kF6hFc5N9z5Q.aHR0cHM6Ly9wcm9kLXMwLWthZWxhbi5udWJhbmsuY29tLmJyL2FwaS9hdXRob3JpemF0aW9uL2NlcnRpZmljYXRlLXN0YXR1cz9za2lwLWludHJvPXRydWU"
+    },
+    "rosetta_localization": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAjlxKSwli-P1XtPXXgiw7dmclluQ.aHR0cHM6Ly9wcm9kLXMwLXJvc2V0dGEubnViYW5rLmNvbS5ici9hcGkvc3RyaW5ncy9sb2NhbGl6YXRpb25z"
+    },
+    "credit_card_widget": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBEp3kmTrZOzZtLfGS2RRlqdamQ3g.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L3dpZGdldA"
+    },
+    "revoke_token": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDoV28GLVEQYvnPwBMVrQIH5KJBMQ.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3Jldm9rZQ"
+    },
+    "userinfo": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAF-5obM3RRAalRZrGip3woZFBNQw.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3VzZXJpbmZv"
+    },
+    "events_page": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LB9SEa-fQWYmtuDJ-k-_Y9yfVxgrQ.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2ZlZWQ_ZGF5cz05MA"
+    },
+    "loginWebapp": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBrjfZ3r9LOyz3JwUL4CJIWRh1qEA.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL2xvZ2luLXdlYmFwcA"
+    },
+    "dropman": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAte7QBRLx3sFg1F_zPuYu_8OEYMQ.aHR0cHM6Ly9wcm9kLXMwLW1hbmNpbmkubnViYW5rLmNvbS5ici9hcGkvcXVlcnk"
+    },
+    "token_validate": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LD7FUfKfHPvqu6s8l2QcmmamDiNLw.aHR0cHM6Ly9wcm9kLXMwLWthcm1hLXBvbGljZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L3Rva2VuL3ZhbGlkYXRl"
+    },
+    "events": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAUhxVjsbn0SdwmA5CbsLaUjX4_Og.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2ZlZWQ"
+    },
+    "register_rewards": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCUDAAcK89KGk7rBUMTXrgd1T78Ew.aHR0cHM6Ly9wcm9kLXMwLXNvbW1lbGllci5udWJhbmsuY29tLmJyL2FwaS9wcm9kdWN0cy9yZXdhcmRzL3BsYW5z"
+    },
+    "login_webapp": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBrjfZ3r9LOyz3JwUL4CJIWRh1qEA.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL2xvZ2luLXdlYmFwcA"
+    },
+    "postcode": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LB8RKKCudmQ0LSR-eMWdlytWGLsBg.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9wb3N0Y29kZXMvYnIve3Bvc3Rjb2RlfQ"
+    },
+    "app_flows": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBYnYElL8mvOB8pwMxPV0aJhB8-Ww.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2FwcC9mbG93cw"
+    },
+    "magnitude": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDgqklV0IPGvj1yb0l-eI9lSNwTbA.aHR0cHM6Ly9wcm9kLXMwLW1hZ25pdHVkZS5udWJhbmsuY29tLmJyL2FwaS9ldmVudHM"
+    },
+    "facade": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LA2UHdvzxg7EfjA2lSM-TETo3duhw.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9kaXNjb3Zlcnk"
+    },
+    "rewards_signup_widget": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAYwNywxsjnf06pqkb9-yez84wLlQ.aHR0cHM6Ly9wcm9kLXMwLWNoYXRlYXUubnViYW5rLmNvbS5ici9hcGkvY3VzdG9tZXJzLzU1ZDlkYjYyLWNlN2ItNDQ1NS05OThmLTk5ZDAwNzY5MzhlNi9jcm9zcy1zZWxs"
+    },
+    "revoke_all": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCi_hq8s2Ixt7wmq4_qG6mtdnCCrA.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3Jldm9rZS9hbGw"
+    },
+    "customer": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBUONexX22H9Els1HrhrrCpmuxzjA.aHR0cHM6Ly9wcm9kLXMwLWN1c3RvbWVycy5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2"
+    },
+    "account": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDYJ3LwPtKfcJjdCu2AoUZwxYA8fA.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9hY2NvdW50cy81NWRiNzQzZi00MWZmLTQyYmItODhjMi04NDEyZThlODUyNTY"
+    },
+    "bills_summary": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LByQeYjtx8WuSj5YeK1vPuN3mFrzQ.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9hY2NvdW50cy81NWRiNzQzZi00MWZmLTQyYmItODhjMi04NDEyZThlODUyNTYvYmlsbHMvc3VtbWFyeQ"
+    },
+    "start_auto_trust": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDasgOVDICjyHGx-MNkSXXLOzYKig.aHR0cHM6Ly9wcm9kLXMwLWthcm1hLXBvbGljZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2F1dG8tdHJ1c3Q"
+    },
+    "features_map": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAENua0BYacMkA92IfcXF1SwuDSSw.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9jdXN0b21lcnMvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L3JvbGxvdXQtbWFw"
+    },
+    "healthcheck": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAJhD_PzdtCoydZ4Zhr6q8Yfkvpmg.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL2hlYWx0aGNoZWNrLWRldmljZQ"
+    },
+    "savings_account": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCpIWlKqzYu8CQ_xvlEy4e6FowKmw.aHR0cHM6Ly9wcm9kLXMwLXN0b3Jtc2hpZWxkLm51YmFuay5jb20uYnIvYXBpL3F1ZXJ5"
+    },
+    "selfie_authorization": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCq6NVnZ1Y4iZZsDjNQcU2PG81FjQ.aHR0cHM6Ly9wcm9kLXMwLWJvbmFmb250Lm51YmFuay5jb20uYnIvYXBpL2N1c3RvbWVycy81NWQ5ZGI2Mi1jZTdiLTQ0NTUtOTk4Zi05OWQwMDc2OTM4ZTYvZmxvd3Mvc2VsZmllLWF1dGhvcml6YXRpb24"
+    },
+    "rewards_enrollment": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAhhe1-2VWtV0x947-G0WEFFN0t_Q.aHR0cHM6Ly9wcm9kLXMwLXNvbW1lbGllci5udWJhbmsuY29tLmJyL2FwaS9wcm9kdWN0cy9yZXdhcmRzL2N1c3RvbWVycy81NWQ5ZGI2Mi1jZTdiLTQ0NTUtOTk4Zi05OWQwMDc2OTM4ZTYvZW5yb2xsbWVudA"
+    },
+    "purchases": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LASTd7t43EzRF0RsJXEQdzDLm8laQ.aHR0cHM6Ly9wcm9kLXMwLWZhY2FkZS5udWJhbmsuY29tLmJyL2FwaS9yZW1vdmVkP25hbWU9cHVyY2hhc2Vz"
+    },
+    "blackmirror": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDlcoa0_guiSAOTTYRfot4dk2u6Dg.aHR0cHM6Ly9wcm9kLWdsb2JhbC1jb3VudGVyc3BlbGwubnViYW5rLmNvbS5ici9hcGkvY3VzdG9tZXIvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L2ZhcQ"
+    },
+    "ghostflame": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCpIWlKqzYu8CQ_xvlEy4e6FowKmw.aHR0cHM6Ly9wcm9kLXMwLXN0b3Jtc2hpZWxkLm51YmFuay5jb20uYnIvYXBpL3F1ZXJ5"
+    },
+    "revelio": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBQsn8D_C3F9JBafxjZC6ncQaLAHw.aHR0cHM6Ly9wcm9kLXMwLXJldmVsaW8ubnViYW5rLmNvbS5icg"
+    },
+    "canuto": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LAEuLh_E5EVM5WGdOapvikLKx2V1w.aHR0cHM6Ly9wcm9kLXMwLWNhbnV0by5udWJhbmsuY29tLmJyL2FwaS9xdWVyeQ"
+    },
+    "shore": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBxandiaxonsozIQGrG3ppTYVej5Q.aHR0cHM6Ly9wcm9kLXMwLXNob3JlLm51YmFuay5jb20uYnIvYXBpL3F1ZXJ5"
+    },
+    "user_change_password": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LDTTmxaFroSreF7twfJvvn00h51CA.aHR0cHM6Ly9wcm9kLWdsb2JhbC1hdXRoLm51YmFuay5jb20uYnIvYXBpL3VzZXIvNTVkOWRiNjItY2U3Yi00NDU1LTk5OGYtOTlkMDA3NjkzOGU2L3Bhc3N3b3Jk"
+    },
+    "rosetta_localizations_by_locale": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LBOEmlr945U2XvvrrBmSpbtpeyeqQ.aHR0cHM6Ly9wcm9kLXMwLXJvc2V0dGEubnViYW5rLmNvbS5ici9hcGkvY3VzdG9tZXJzLzU1ZDlkYjYyLWNlN2ItNDQ1NS05OThmLTk5ZDAwNzY5MzhlNi9sb2NhbGUvOmxvY2FsZS9sb2NhbGl6YXRpb25z"
+    },
+    "tolkien_registry": {
+      "href": "https://prod-s0-webapp-proxy.nubank.com.br/api/proxy/AJxL5LCkfXyqagQ9fKwv6725JJjuf1wwLA.aHR0cHM6Ly9wcm9kLXMwLXRvbGtpZW4ubnViYW5rLmNvbS5ici9hcGkvdG9rZW4vcmVnaXN0cnk"
+    }
+  }
+}
